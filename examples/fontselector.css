@@ -1,0 +1,43 @@
+
+* { margin: 0; padding: 0; }
+
+#fontSelect {
+	position: relative;
+	background: #CCC;
+	border: 1px solid #AAA;
+	-webkit-border-radius: 4px;
+	padding: 3px;
+
+	height: 28px;
+	line-height: 28px;
+	cursor: pointer;
+
+	margin: 3px;
+}
+
+#fontSelect span {
+	overflow: hidden;
+}
+
+#fontSelect ul {
+	list-style: none;
+	width: 200px;
+	background: #CCC;
+	position: absolute;
+	left: 0;
+	top: 28px;
+}
+
+#fontSelect li {
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+	cursor: pointer;
+	padding: 0 10px;
+
+	font-size: 14px;
+}
+
+#fontSelect li:hover {
+	background: #AAA;
+}

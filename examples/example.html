@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Font Selector</title>
+
+	<link rel="stylesheet" href="fontselector.css">
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../src/jquery.fontselector.js"></script>
+
+	<script type="text/javascript">
+
+	$(function() {
+		$('#fontSelect').fontSelector({
+			'hide_fallbacks' : true,
+			'initial' : 'Courier New,Courier New,Courier,monospace'
+		});
+	});
+
+	</script>
+</head>
+<body>
+
+	<div style="width:300px;margin:100px auto;">
+
+		<div id="fontSelect">
+			<span>Arial</span>
+			<ul>
+				<li>Arial,Arial,Helvetica,sans-serif</li>
+				<li>Arial Black,Arial Black,Gadget,sans-serif</li>
+				<li>Comic Sans MS,Comic Sans MS,cursive</li>
+				<li>Courier New,Courier New,Courier,monospace</li>
+				<li>Georgia,Georgia,serif</li>
+				<li>Impact,Charcoal,sans-serif</li>
+				<li>Lucida Console,Monaco,monospace</li>
+				<li>Lucida Sans Unicode,Lucida Grande,sans-serif</li>
+				<li>Palatino Linotype,Book Antiqua,Palatino,serif</li>
+				<li>Tahoma,Geneva,sans-serif</li>
+				<li>Times New Roman,Times,serif</li>
+				<li>Trebuchet MS,Helvetica,sans-serif</li>
+				<li>Verdana,Geneva,sans-serif</li>
+			</ul>
+		</div>
+
+	</div>
+
+</body>
+</html>
