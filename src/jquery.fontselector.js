@@ -38,6 +38,7 @@
       }, options);
 
       var root = this;
+      root.callback = settings['selected'];
       var visible = false;
       var selected = false;
 
@@ -53,7 +54,7 @@
         root.css('font-family', font);
         selected = font;
 
-        settings['selected'](selected);
+        root.callback(selected);
       }
 
       var positionUl = function() {
