@@ -1,4 +1,3 @@
-
 # Changes
 
 *As of commit 5350d8081d (9th Jul 2013) the font options are specified from the jquery plugin initialization*
