@@ -13,7 +13,37 @@
 	$(function() {
 		$('#fontSelect').fontSelector({
 			'hide_fallbacks' : true,
-			'initial' : 'Courier New,Courier New,Courier,monospace'
+			'initial' : 'Courier New,Courier New,Courier,monospace',
+			'selected' : function(style) { alert(style); },
+			'fonts' : [
+				'Arial,Arial,Helvetica,sans-serif',
+				'Arial Black,Arial Black,Gadget,sans-serif',
+				'Comic Sans MS,Comic Sans MS,cursive',
+				'Courier New,Courier New,Courier,monospace',
+				'Georgia,Georgia,serif',
+				'Impact,Charcoal,sans-serif',
+				'Lucida Console,Monaco,monospace',
+				'Lucida Sans Unicode,Lucida Grande,sans-serif',
+				'Palatino Linotype,Book Antiqua,Palatino,serif',
+				'Tahoma,Geneva,sans-serif',
+				'Times New Roman,Times,serif',
+				'Trebuchet MS,Helvetica,sans-serif',
+				'Verdana,Geneva,sans-serif',
+				'Gill Sans,Geneva,sans-serif'
+				]
+		});
+
+		$('#fontSelect2').fontSelector({
+			'hide_fallbacks' : true,
+			'initial' : 'Courier New,Courier New,Courier,monospace',
+			'selected' : function(style) { alert(style); },
+			'fonts' : [
+				'Arial,Arial,Helvetica,sans-serif',
+				'Arial Black,Arial Black,Gadget,sans-serif',
+				'Comic Sans MS,Comic Sans MS,cursive',
+				'Courier New,Courier New,Courier,monospace',
+				'Georgia,Georgia,serif'
+				]
 		});
 	});
 
@@ -23,26 +53,12 @@
 
 	<div style="width:300px;margin:100px auto;">
 
-		<div id="fontSelect">
-			<span>Arial</span>
+		<div id="fontSelect" class="fontSelect">
 			<div class="arrow-down"></div>
+		</div>
 
-			<ul>
-				<li>Arial,Arial,Helvetica,sans-serif</li>
-				<li>Arial Black,Arial Black,Gadget,sans-serif</li>
-				<li>Comic Sans MS,Comic Sans MS,cursive</li>
-				<li>Courier New,Courier New,Courier,monospace</li>
-				<li>Georgia,Georgia,serif</li>
-				<li>Impact,Charcoal,sans-serif</li>
-				<li>Lucida Console,Monaco,monospace</li>
-				<li>Lucida Sans Unicode,Lucida Grande,sans-serif</li>
-				<li>Palatino Linotype,Book Antiqua,Palatino,serif</li>
-				<li>Tahoma,Geneva,sans-serif</li>
-				<li>Times New Roman,Times,serif</li>
-				<li>Trebuchet MS,Helvetica,sans-serif</li>
-				<li>Verdana,Geneva,sans-serif</li>
-				<li>Gill Sans,Geneva,sans-serif</li>
-			</ul>
+		<div id="fontSelect2" class="fontSelect">
+			<div class="arrow-down"></div>
 		</div>
 
 	</div>

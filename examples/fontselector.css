@@ -1,7 +1,7 @@
 
 * { margin: 0; padding: 0; }
 
-#fontSelect {
+.fontSelect {
 	position: relative;
 	padding: 3px;
 	height: 28px;
@@ -23,12 +23,12 @@
 	border: 1px solid #cecece;
 }
 
-#fontSelect span {
+.fontSelect span {
 	overflow: hidden;
 	margin-left: 5px;
 }
 
-#fontSelect .arrow-down {
+.fontSelect .arrow-down {
 	position: absolute;
 	right: 10px;
 	top: 14px;
@@ -38,7 +38,7 @@
 	border-top: 6px solid #AAA;
 }
 
-#fontSelect ul {
+.fontSelectUl {
 	list-style: none;
 	width: 200px;
 	background: #f9f9f9;
@@ -47,7 +47,7 @@
 	top: 35px;
 }
 
-#fontSelect li {
+.fontSelectUl li {
 	height: 24px;
 	line-height: 24px;
 	overflow: hidden;
@@ -60,7 +60,7 @@
 	border-right: 1px solid #f0f0f0;
 }
 
-#fontSelect ul li:last-child {
+.fontSelectUl li:last-child {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
@@ -68,6 +68,6 @@
 	border-bottom: 1px solid #EEEEEE;
 }
 
-#fontSelect li:hover {
+.fontSelectUl li:hover {
 	background: #DDD;
 }

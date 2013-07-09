@@ -33,47 +33,66 @@
       settings = $.extend( {
         'hide_fallbacks' : false,
         'selected' : function(style) {},
-        'initial' : ''
+        'initial' : '',
+        'fonts' : []
       }, options);
 
       var root = this;
-      var ul = this.find('ul');
-      ul.hide();
       var visible = false;
+      var selected = false;
 
-      if (settings['initial'] != '')
-      {
+      var displayName = function(font) {
         if (settings['hide_fallbacks'])
-          root.find('span').html(settings['initial'].substr(0, settings['initial'].indexOf(',')));
+          return font.substr(0, font.indexOf(','));
         else
-          root.find('span').html(settings['initial']);
-
-        root.css('font-family', settings['initial']);
+          return font;
       }
 
-      ul.find('li').each(function() {
-        $(this).css("font-family", $(this).text());
+      var select = function(font) {
+        root.find('span').html(displayName(font).replace(/["']{1}/gi,""));
+        root.css('font-family', font);
+        selected = font;
 
-        if (settings['hide_fallbacks'])
-        {
-          var content = $(this).text();
-          $(this).text(content.substr(0, content.indexOf(',')));
-        }
-      });
+        settings['selected'](selected);
+      }
+
+      var positionUl = function() {
+        var left, top;
+        left = $(root).offset().left;
+        top = $(root).offset().top + $(root).outerHeight();
+
+        $(ul).css({
+          'position': 'absolute',
+          'left': left + 'px',
+          'top': top + 'px'
+        });
+      }
+
+      // Setup markup
+      $(this).prepend('<span>' + settings['initial'].replace(/'/g,'&#039;') + '</span>');
+      var ul = $('<ul class="fontSelectUl"></ul>').appendTo('body');
+      ul.hide();
+      positionUl();
+
+      for (var i = 0; i < settings['fonts'].length; i++) {
+        var item = $('<li>' + displayName(settings['fonts'][i]) + '</li>').appendTo(ul);
+        $(item).css('font-family', settings['fonts'][i]);
+      }
+
+      if (settings['initial'] != '')
+        select(settings['initial']);
 
       ul.find('li').click(function() {
 
         if (!visible)
           return;
 
+        positionUl();
         ul.slideUp('fast', function() {
           visible = false;
         });
 
-        root.find('span').html( $(this).text() );
-        root.css('font-family', $(this).css('font-family'));
-
-        settings['selected']($(this).css('font-family'));
+        select($(this).css('font-family'));
       });
 
       $(this).click(function(event) {
@@ -83,6 +102,7 @@
 
         event.stopPropagation();
 
+        positionUl();
         ul.slideDown('fast', function() {
           visible = true;
         });
