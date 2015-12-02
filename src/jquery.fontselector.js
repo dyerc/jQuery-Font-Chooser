@@ -71,7 +71,8 @@
         $(ul).css({
           'position': 'absolute',
           'left': left + 'px',
-          'top': top + 'px'
+          'top': top + 'px',
+          'width': $(root).outerWidth() + 'px'
         });
       }
 
