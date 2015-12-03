@@ -1,6 +1,7 @@
-# Changes
+# Demo
 
-*As of commit 5350d8081d (9th Jul 2013) the font options are specified from the jquery plugin initialization*
+A working demo of the files in the examples folder can be found at:
+http://s3.amazonaws.com/jquery-font-chooser/examples/example.html
 
 # Usage
 
@@ -38,8 +39,3 @@ To turn the above into a font selector dropdown:
 
 The hide_fallbacks option, when true, prevents the full font stack specified in the ul from being outputted. Instead only the first font name will be shown, the full font stack will be used specified in the css though. The function passed to selected will be called whenever a new font is selected, the first argument is the full font stack. The inital font is the font be initially shown in the dropdown.
 
-# Example
-
-A working demo of the files in the examples folder can be found at:
-
-http://s3.amazonaws.com/jquery-font-chooser/examples/example.html
