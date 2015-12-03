@@ -33,14 +33,20 @@
       settings = $.extend( {
         'hide_fallbacks' : false,
         'selected' : function(style) {},
+        'opened' : function() {},
+        'closed' : function() {},
         'initial' : '',
         'fonts' : []
       }, options);
 
       var root = this;
-      root.callback = settings['selected'];
+      var $root = $(this);
+      root.selectedCallback = settings['selected'];
+      root.openedCallback = settings['opened'];
+      root.closedCallback = settings['closed'];
       var visible = false;
       var selected = false;
+      var openedClass = 'fontSelectOpen';
 
       var displayName = function(font) {
         if (settings['hide_fallbacks'])
@@ -54,7 +60,7 @@
         root.css('font-family', font);
         selected = font;
 
-        root.callback(selected);
+        root.selectedCallback(selected);
       }
 
       var positionUl = function() {
@@ -65,12 +71,33 @@
         $(ul).css({
           'position': 'absolute',
           'left': left + 'px',
-          'top': top + 'px'
+          'top': top + 'px',
+          'width': $(root).outerWidth() + 'px'
         });
       }
 
+      var closeUl = function() {
+        ul.slideUp('fast', function() {
+          visible = false;
+        });
+
+        $root.removeClass(openedClass);
+
+        root.closedCallback();
+      }
+
+      var openUi = function() {
+        ul.slideDown('fast', function() {
+          visible = true;
+        });
+
+        $root.addClass(openedClass);
+
+        root.openedCallback();
+      }
+
       // Setup markup
-      $(this).prepend('<span>' + settings['initial'].replace(/'/g,'&#039;') + '</span>');
+      $root.prepend('<span>' + settings['initial'].replace(/'/g,'&#039;') + '</span>');
       var ul = $('<ul class="fontSelectUl"></ul>').appendTo('body');
       ul.hide();
       positionUl();
@@ -89,14 +116,12 @@
           return;
 
         positionUl();
-        ul.slideUp('fast', function() {
-          visible = false;
-        });
+        closeUl();
 
         select($(this).css('font-family'));
       });
 
-      $(this).click(function(event) {
+      $root.click(function(event) {
 
         if (visible)
           return;
@@ -104,28 +129,24 @@
         event.stopPropagation();
 
         positionUl();
-        ul.slideDown('fast', function() {
-          visible = true;
-        });
+        openUi();
       });
 
       $('html').click(function() {
         if (visible)
         {
-          ul.slideUp('fast', function() {
-            visible = false;
-          });
+          closeUl();
         }
       })
     },
     selected : function() {
       return this.css('font-family');
     },
-	select : function(font) {
-        this.find('span').html(font.substr(0, font.indexOf(',')).replace(/["']{1}/gi,""));
-        this.css('font-family', font);
-        selected = font;
-      }
+    select : function(font) {
+      this.find('span').html(font.substr(0, font.indexOf(',')).replace(/["']{1}/gi,""));
+      this.css('font-family', font);
+      selected = font;
+    }
   };
 
   $.fn.fontSelector = function(method) {
@@ -138,4 +159,3 @@
     }
   }
 }) ( jQuery );
-

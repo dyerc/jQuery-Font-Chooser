@@ -15,6 +15,8 @@ To turn the above into a font selector dropdown:
 			'hide_fallbacks' : true,
 			'initial' : 'Courier New,Courier New,Courier,monospace',
 			'selected' : function(style) { alert(style); },
+			'opened' : function(style) { alert('opened'); },
+			'closed' : function(style) { alert('closed'); },
 			'fonts' : [
 				'Arial,Arial,Helvetica,sans-serif',
 				'Arial Black,Arial Black,Gadget,sans-serif',
