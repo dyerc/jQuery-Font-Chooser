@@ -1,8 +1,3 @@
-# Demo
-
-A working demo of the files in the examples folder can be found at:
-http://s3.amazonaws.com/jquery-font-chooser/examples/example.html
-
 # Usage
 
 	<div id="fontSelect" class="fontSelect">
